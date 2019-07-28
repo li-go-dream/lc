@@ -82,6 +82,7 @@ import Vue from 'vue'
 export default {
   data(){
     return{
+      bind:0,
       allchecked:false,
       allchecked1:false,
       dialogFormVisible:false,
@@ -117,6 +118,7 @@ export default {
     },
     init(id){
       this.dialogFormVisible=true;
+      this.bid =id;
       this.lookAuth(id)
     },
     c_allchange(e,id,item){
@@ -245,6 +247,7 @@ export default {
         delete item.id;
       })
       var data ={
+        bid:this.bid,
         id: Boolean(window.localStorage.getItem('data')) ? (JSON.parse(window.localStorage.getItem('data')).area)[0]['mid'] : '',
         data:x
       }
@@ -253,6 +256,8 @@ export default {
         if(res.data.status === 0){
           this.$message.success('操作成功')
           this.dialogFormVisible=false
+        }else{
+          this.$message.error('操作失败')
         }
       })
       
@@ -264,6 +269,7 @@ export default {
         delete item.id
       })
       var data ={
+        bid:this.bid,
         id: Boolean(window.localStorage.getItem('data')) ? (JSON.parse(window.localStorage.getItem('data')).area)[0]['mid'] : '',
         data:this.member
       }
@@ -275,6 +281,9 @@ export default {
         console.log(res)
         if(res.data.status === 0){
           this.dialogFormVisible=false
+          this.$message.success('操作成功')
+        }else{
+          this.$message.error('操作失败')
         }
       })
     },
