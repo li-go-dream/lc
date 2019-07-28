@@ -4,6 +4,16 @@
       <h1>
         <img src="http://ku.90sjimg.com/element_pic/00/86/97/3756ec91afd891e.jpg" alt="logo">
         <a href="javascript:;">市场开发信息跟踪管理系统</a>
+        <el-dropdown style="float:right;color:white;cursor:pointer" @command="exit">
+          <span class="el-dropdown-link">
+            {{name}}
+            <i class="el-icon-arrow-down el-icon--right"></i>
+          </span>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item>{{position}}</el-dropdown-item>
+            <el-dropdown-item divided command='exit'>退出</el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
       </h1>
     </el-header>
     <el-container>
@@ -47,6 +57,8 @@ import routes from '../router/routes'
 export default {
   data(){
     return{
+      name:Boolean(window.localStorage.getItem('data')) ? JSON.parse(window.localStorage.getItem('data'))['name'] : '',
+      position:Boolean(window.localStorage.getItem('data')) ? JSON.parse(window.localStorage.getItem('data'))['position'] : '',
       classify: [],
       noitem: ((routes.filter(item => item.path === "/"))[0].children).filter(it => !it.father),
       hasitem: ((routes.filter(item => item.path === "/"))[0].children).filter(it => it.father)
@@ -56,6 +68,12 @@ export default {
     this.cycle(this.hasitem)
   },
   methods: {
+    exit(e){
+      if(e){
+        window.localStorage.removeItem('data')
+        this.$router.push({path:'/login'})
+      }
+    },
     handleOpen(key, keyPath) {
     },
     handleClose(key, keyPath) {

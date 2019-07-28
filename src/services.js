@@ -47,6 +47,8 @@ export const addpeople = (data) => ajax.post('user/add',data)//新增项目信�
 export const getdictionary = (data) => ajax.post('dictionary/check',data)//字典查看
 export const addorupdate_dic = (data) => ajax.post('dictionary/info',data)//字典添加或修改
 export const delete_dic = (data) => ajax.post('dictionary/delete',data)//字典删除
-export const lookAuth = (data) => ajax.post('user/lookAuth',data)//授权查看
+export const lookAuth = (data) => ajax.post('user/lookAuth',data)//授权查看user/memberEmpower
 export const code_export = (data) => ajax.post('regulation/code_export',data)//导出
+export const addpermission = (data) => ajax.post('user/memberEmpower',data)//人员授权
+export const areapermission = (data) => ajax.post('user/areaEmpower',data)//地区授权
 

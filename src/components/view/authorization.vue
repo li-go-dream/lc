@@ -134,8 +134,8 @@ export default {
         }
       })
     },
-    Update(){
-      this.$refs['isAddpermission'].init();
+    Update(e){
+      this.$refs['isAddpermission'].init(e.id);
     },
     addpeople(){
       this.$refs['isAddpeople'].init();
