@@ -389,7 +389,7 @@ export default {
       this.$refs['isAddorUpdate'].init();
     },
     Export(){
-      this.$refs['isExport'].init();
+      this.$refs['isExport'].init(this.form);
     },
     Update(x){
       this.$refs['isAddorUpdate'].init(x);      

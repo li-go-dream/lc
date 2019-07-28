@@ -28,15 +28,19 @@ export default {
     return{
       fun:'总表',
       isfun:1,
+      leader:[],
       dialogFormVisible:false
     }
   },
   methods:{
-    init(){
+    init(data){
+      console.log(data)
+      if(data){
+        this.leader = data.leader
+      }
       this.dialogFormVisible=true;
     },
     save(id){
-      console.log(id,1)
       if(this.isfun){
         var data={
           leader:[],
@@ -50,7 +54,26 @@ export default {
       .then(res => {
         console.log(res)
       })
-    }
+    },
+    request(){
+      const req = new XMLHttpRequest();
+      req.open('POST', '<接口地址>', true);
+      req.responseType = 'blob';
+      req.setRequestHeader('Content-Type', 'application/json');
+      req.onload = function() {
+        const data = req.response;
+        const blob = new Blob([data]);
+        const blobUrl = window.URL.createObjectURL(blob);
+        download(blobUrl);
+      };
+      req.send('<请求参数：json字符串>');
+    },
+    download(blobUrl){
+      const a = document.createElement('a');
+      a.download = '<文件名>';
+      a.href = blobUrl;
+      a.click();
+    } 
   }
 }
 </script>
