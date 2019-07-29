@@ -108,9 +108,15 @@
                 </el-col>
             </el-row>
               <el-row>
-                <el-col :span="23">
+                <el-col :span="11">
                     <el-form-item label="市场进展描述：" prop="development_process_description">
                         <el-input v-model="form.development_process_description" autocomplete="off" placeholder="请输入项目进展描述"></el-input>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="1" style="visibility: hidden;">空格</el-col>
+                <el-col :span="11">
+                    <el-form-item label="更新时间：" prop="update_time">
+                        <el-date-picker type="date" placeholder="请选择更新时间" v-model="form.update_time" style="width: 100%;"></el-date-picker>
                     </el-form-item>
                 </el-col>
             </el-row>
@@ -191,6 +197,7 @@ export default {
                 contract_way:'',
                 first_input_time: '',   //首次录入时间
                 contract_time:'',//预计承揽时间
+                update_time:'',//更新时间
             },
             rules:{
                 leader:[
@@ -283,6 +290,11 @@ export default {
                         required: true,message:'请选择预计承揽时间',trigger: 'blur'
                     }
                 ],//预计承揽时间
+                update_time:[
+                    {
+                        required: true,message:'请选择更新时间',trigger: 'blur'
+                    }
+                ],//更新时间
             }
         }
     },

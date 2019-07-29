@@ -210,7 +210,7 @@
     </el-table-column>
   </el-table>
   <div style="height:30px;"></div>
-  <div>
+  <!-- <div>
     <div style="display:inline-block;float:right;margin-right:20px;">
       <el-pagination
       @size-change="handleSizeChange"
@@ -221,7 +221,7 @@
       :total="count">
       </el-pagination>
     </div>
-  </div>
+  </div> -->
   <AddorUpdate @func="getmessage" ref="isAddorUpdate"></AddorUpdate>
   <History ref="isHistory"></History>
   <Export :msg="exportid" ref="isExport"></Export>
@@ -253,7 +253,7 @@ export default {
       },
       tableData:[],
       currentPage:1,
-      size:6,
+      // size:6,
       count:0,
       loading:true,
       exportid:[]
@@ -267,7 +267,7 @@ export default {
   mounted:function(){
     var data={
       page:1,
-      size:this.size
+      // size:this.size
     }
     this.getprojectlist(data);
     this.getleaderlist();
@@ -278,7 +278,7 @@ export default {
       if(msg){
         var data={
           page:1,
-          size:this.size
+          // size:this.size
         }
         this.getprojectlist(data);
       }else{
@@ -291,7 +291,7 @@ export default {
     handleCurrentChange(val) {
       var data={
         page:val,
-        size:this.size
+        // size:this.size
       }
       this.getprojectlist(data);
     },

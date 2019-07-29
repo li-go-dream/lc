@@ -1,5 +1,4 @@
 import axios from 'axios'
-import Vue from 'vue'
 import router from './router'
 
 const ajax = axios.create({
@@ -16,15 +15,8 @@ ajax.interceptors.response.use((resp) => {
   var Router = router
   if(resp.data.status === 2){
     window.localStorage.removeItem('data');
-    Vue.prototype.$message({
-      message: resp.data.msg,
-      type: 'warning',
-      duration: 1000,
-      onClose:function(){
-        Router.push({
-          path: '/login'
-        })
-      }
+    Router.push({
+      path: '/login'
     })
     return false;
   }

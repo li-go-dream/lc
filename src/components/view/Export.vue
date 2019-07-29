@@ -9,7 +9,7 @@
     <div style="height:40px"></div>
     <el-row class="bottom_row">
       <el-col :span="8" :push="8">
-        <el-input v-model="fun">
+        <el-input v-model="fun" disabled >
           <el-button slot="append" @click="save(msg)">保存</el-button>
         </el-input>
       </el-col>
@@ -53,6 +53,9 @@ export default {
       this.$ajax.code_export(data)
       .then(res => {
         console.log(res)
+        if(res.data !=''){
+          this.download(res.data)
+        }
       })
     },
     request(){
@@ -70,7 +73,7 @@ export default {
     },
     download(blobUrl){
       const a = document.createElement('a');
-      a.download = '<文件名>';
+      a.target="_blank";
       a.href = blobUrl;
       a.click();
     } 

@@ -2,7 +2,7 @@
   <el-container>
     <el-header>
       <h1>
-        <img src="http://ku.90sjimg.com/element_pic/00/86/97/3756ec91afd891e.jpg" alt="logo">
+        <img src="../../static/logo.png" alt="logo">
         <a href="javascript:;">市场开发信息跟踪管理系统</a>
         <el-dropdown style="float:right;color:white;cursor:pointer" @command="exit">
           <span class="el-dropdown-link">
